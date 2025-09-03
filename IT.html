@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyStash</title>
+    <link rel="icon" type="image/x-icon" href="fav icon.png" />
+    <link rel="stylesheet" href="studystash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      h1 {
+        text-align: center;
+        color: saddlebrown;
+        font-family: "Courgette", cursive;
+      }
+      #sem {
+        text-align: start;
+        width: max-content;
+        margin: 30px 0px;
+      }
+      .card {
+        width: 250px;
+        transition: transform 0.5s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card-img-top {
+        height: 300px;
+        width: 250px;
+      }
+      #description {
+        margin-top: 10px;
+        padding: 0px 14px;
+        text-justify: justify;
+        color: black;
+        font-family: "Nunito", sans-serif;
+      }
+      #icon {
+        width: 50px;
+        height: 50px;
+        margin-top: 10px;
+        margin-right: 0%;
+      }
+      hr {
+        margin-top: 40px;
+        border: 1px solid black;
+      }
+      #notes {
+        margin-left: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navsection" id="navbar">
+      <div class="logo" style="margin-left: 150px">
+        <a href="index.html"
+          ><img style="height: 50px" src="Logo.png" alt="logo"
+        /></a>
+      </div>
+      <ul class="list-unstyled" id="navLinks">
+        <li><a href="about.html">About</a></li>
+        <li><a href="">Browse</a></li>
+        <li><a href="">My Books</a></li>
+        <li><a href="">Post</a></li>
+        <li>
+          <button class="btn" id="login" onclick="openPopup1()">Log In</button>
+        </li>
+        <li>
+          <button class="btn" id="signup" onclick="openPopup2()">
+            Sign Up
+          </button>
+        </li>
+      </ul>
+      <div
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
+        ☰
+      </div>
+    </nav>
+
+    <!--login box-->
+    <div class="popup-box1" id="popup-box1">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon1"
+        onclick="closePopup1()"
+      />
+      <h1>Welcome Back</h1>
+      <p class="p0">Login to continue your journey</p>
+
+      <button class="google1">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Login with Google
+      </button>
+      <button class="apple1">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Login with Apple
+      </button>
+      <p class="p12">Or Login with your email</p>
+      <input type="email" id="email1" placeholder="Email" />
+      <input type="password" id="password1" placeholder="Password" />
+      <p id="error-msg1">Please enter valid credentials</p>
+      <button class="update1" onclick="login()">Login</button>
+      <p class="p32">
+        Don’t have an account?
+        <span class="p32a" onclick="switchToSignUp()">Sign Up</span>
+      </p>
+    </div>
+
+    <!--signup box-->
+    <div class="popup-overlay"></div>
+    <div class="popup-box2" id="popup-box2">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon2"
+        onclick="closePopup2()"
+      />
+      <h1>Create your account</h1>
+      <p class="p0">Join StüdyStash to start your journey</p>
+      <button class="google2">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Sign up with Google
+      </button>
+      <button class="apple2">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Sign up with Apple
+      </button>
+      <p class="p12">Or sign up with your email</p>
+      <input type="text" id="fullname" placeholder="Full Name" />
+      <input type="email" id="email2" placeholder="Email" />
+      <input type="password" id="password2" placeholder="Password" />
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <p id="error-msg2">Please fill all details correctly</p>
+      <button class="update2" onclick="createAccount()">Create Account</button>
+      <p class="p32">
+        Already have an account?
+        <span class="p32a" onclick="switchToSignIn()">Log In</span>
+      </p>
+    </div>
+
+    <!--Notes Section-->
+    <section style="margin-top: 130px">
+      <h1>Information Technology</h1>
+      <hr />
+
+      <!--sem1-->
+      <div class="container">
+        <h1 id="sem">Semester 1</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/PE-1.webp"
+                class="card-img-top"
+                alt="Profession Development 1"
+              />
+              <div class="d-flex px-4">
+                <h3>Professional English I</h3>
+                <a href="Notes/Professional English - 1.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/M-1.jpg"
+                class="card-img-top"
+                alt="Matrices and Calculus"
+              />
+              <div class="d-flex px-4">
+                <h3>Matrices and Calculus</h3>
+                <a href="Notes/Matrices and Calculus.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/P-1.webp"
+                class="card-img-top"
+                alt="Engineering Physics"
+              />
+              <div class="d-flex px-4">
+                <h3>Engineering Physics</h3>
+                <a href="Notes/Engineering Physics 1.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/Chem.jpg"
+                class="card-img-top"
+                alt="Engineering Chemistry"
+              />
+              <div class="d-flex px-4">
+                <h3>Engineering Chemistry</h3>
+                <a href="Notes/Engineering Chemistry.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/python.jpg"
+                class="card-img-top"
+                alt="Problem Solving and Python Programming"
+              />
+              <div class="d-flex px-4">
+                <h3>Python Programming</h3>
+                <a
+                  href="Notes/Problem Solving and Python Programming.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 6-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/T-1.jpg"
+                class="card-img-top"
+                alt="தமிழர் மரபு"
+              />
+              <div class="d-flex px-4">
+                <h3>தமிழர் மரபு</h3>
+                <a href="Notes/Heritage of Tamil.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!--sem2-->
+      <div class="container">
+        <h1 id="sem">Semester 2</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/PE-2.jpg"
+                class="card-img-top"
+                alt="Profession Development II"
+              />
+              <div class="d-flex px-4">
+                <h3>Professional English II</h3>
+                <a href="Notes/Professional English - 2.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/M-2.jpg"
+                class="card-img-top"
+                alt="Statistics and Numerical Methods"
+              />
+              <div class="d-flex px-4">
+                <h3>Statistics and Numerical Methods</h3>
+                <a
+                  href="Notes/Statistics and Numerical Methods - MA3251 2021 Regulation - Notes - Hand Writing.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/P-2.jpeg"
+                class="card-img-top"
+                alt="Physics for Information Science"
+              />
+              <div class="d-flex px-4">
+                <h3>Physics for Information Science</h3>
+                <a
+                  href="Notes/Physics for Information science.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/BEEE.jpg"
+                class="card-img-top"
+                alt="Basic Electrical and Electronics Engineering"
+              />
+              <div class="d-flex px-4">
+                <h3>Basic Electrical and Electronics Engineering</h3>
+                <a
+                  href="Notes/Basic Electrical and Electronics.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/EG.webp"
+                class="card-img-top"
+                alt="Engineering Graphics"
+              />
+              <div class="d-flex px-4">
+                <h3>Engineering Graphics</h3>
+                <a href="Notes/Engineering-Graphics.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 6-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/C.webp"
+                class="card-img-top"
+                alt="Programming in C"
+              />
+              <div class="d-flex px-4">
+                <h3>Programming in C</h3>
+                <a href="Notes/Programming in C.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 7-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/T-2.jpg"
+                class="card-img-top"
+                alt="தமிழரும் தொழில்நுட்பமும்"
+              />
+              <div class="d-flex px-4">
+                <h3>தமிழரும் தொழில் நுட்பமும்</h3>
+                <a href="Notes/Tamils and Technology.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!--sem1-->
+      <div class="container">
+        <h1 id="sem">Semester 3</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/M-3.webp"
+                class="card-img-top"
+                alt="Discrete Mathematics"
+              />
+              <div class="d-flex px-4">
+                <h3>Discrete Mathematics</h3>
+                <a href="Notes/Discrete Mathematics.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/DPCO.jpg"
+                class="card-img-top"
+                alt="Digital Principles and Computer Organization"
+              />
+              <div class="d-flex px-4">
+                <h3>DPCO</h3>
+                <a
+                  href="Notes/Digital Principles and Computer Organization.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/FOD.jpg"
+                class="card-img-top"
+                alt="Foundations of Data Science"
+              />
+              <div class="d-flex px-4">
+                <h3>Foundations of Data Science</h3>
+                <a href="Notes/FOD.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/DS.webp"
+                class="card-img-top"
+                alt="Data Structures and Algorithms"
+              />
+              <div class="d-flex px-4">
+                <h3>Data Structures and Algorithms</h3>
+                <a
+                  href="Notes/Data Structures and Algorithms.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/OOP.webp"
+                class="card-img-top"
+                alt="Object Oriented Programming "
+              />
+              <div class="d-flex px-4">
+                <h3>Object Oriented Programming</h3>
+                <a href="Notes/Object Oriented Programming.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!--sem4-->
+      <div class="container">
+        <h1 id="sem">Semester 4</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/TOC.jpg"
+                class="card-img-top"
+                alt="Theory of Computation"
+              />
+              <div class="d-flex px-4">
+                <h3>Theory of Computation</h3>
+                <a href="Notes/Theory of Computation.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/AIML.jpg"
+                class="card-img-top"
+                alt="Artificial Intelligence and Machine Learning"
+              />
+              <div class="d-flex px-4">
+                <h3>Artificial Intelligence and ML</h3>
+                <a href="Notes/Artificial Intelligence.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/DBMS.jpg"
+                class="card-img-top"
+                alt="Database Management Systems"
+              />
+              <div class="d-flex px-4">
+                <h3>Database Management Systems</h3>
+                <a href="Notes/Database Management Systems.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/Web.webp"
+                class="card-img-top"
+                alt="Web Essentials"
+              />
+              <div class="d-flex px-4">
+                <h3>Web Essentials.</h3>
+                <a href="Notes/Web Essentials.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/OS.jpg"
+                class="card-img-top"
+                alt="Introduction to Operating Systems"
+              />
+              <div class="d-flex px-4">
+                <h3>Introduction to Operating Systems</h3>
+                <a
+                  href="Notes/Introduction to Operating Systems.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 6-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/EVS.webp"
+                class="card-img-top"
+                alt="Environmental Sciences and Sustainability"
+              />
+              <div class="d-flex px-4">
+                <h3>Environmental Sciences and Sustainability</h3>
+                <a
+                  href="Notes/Environmental Science and Sustainability.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!--sem5-->
+      <div class="container">
+        <h1 id="sem">Semester 5</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/CN.jpg"
+                class="card-img-top"
+                alt="Computer Networks"
+              />
+              <div class="d-flex px-4">
+                <h3>Computer Networks</h3>
+                <a href="Notes/Computer Networks.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/FSWD.jpg"
+                class="card-img-top"
+                alt="Full Stack Web Development"
+              />
+              <div class="d-flex px-4">
+                <h3>Full Stack Web Development</h3>
+                <a
+                  href="Notes/Full Stack and Web Development.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/DC.webp"
+                class="card-img-top"
+                alt="Distributed Computing"
+              />
+              <div class="d-flex px-4">
+                <h3>Distributed Computing</h3>
+                <a href="Notes/Distributed Computing.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/IOT.jpg"
+                class="card-img-top"
+                alt="Embedded Systems and IoT"
+              />
+              <div class="d-flex px-4">
+                <h3>Embedded Systems & IoT</h3>
+                <a href="Notes/Embedded Systems and IoT.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/CC.webp"
+                class="card-img-top"
+                alt="Cloud Computing"
+              />
+              <div class="d-flex px-4">
+                <h3>Cloud Computing</h3>
+                <a href="Notes/Cloud Computing.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 6-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/BDA.webp"
+                class="card-img-top"
+                alt="Environmental Sciences and Sustainability"
+              />
+              <div class="d-flex px-4">
+                <h3>Big Data Analytics</h3>
+                <a href="Notes/Big Data Analytics.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!--sem6-->
+      <div class="container">
+        <h1 id="sem">Semester 6</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/OOS.webp"
+                class="card-img-top"
+                alt="Object Oriented Software Engineering"
+              />
+              <div class="d-flex px-4">
+                <h3>Object Oriented Software Engineering</h3>
+                <a
+                  href="Notes/Object Oriented Software Engineering.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/NS.jpg"
+                class="card-img-top"
+                alt="Network and Security"
+              />
+              <div class="d-flex px-4">
+                <h3>Network and Security</h3>
+                <a href="Notes/Network Security BOOK.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/MA.webp"
+                class="card-img-top"
+                alt="Multimedia and Animation"
+              />
+              <div class="d-flex px-4">
+                <h3>Multimedia and Animation</h3>
+                <a href="Notes/Multimedia and Animation.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/STA.jpg"
+                class="card-img-top"
+                alt="Software Testing and Automation"
+              />
+              <div class="d-flex px-4">
+                <h3>Software Testing and Automation</h3>
+                <a
+                  href="Notes/Software Testing and Automation.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/DW.jpg"
+                class="card-img-top"
+                alt="Data Warehousing"
+              />
+              <div class="d-flex px-4">
+                <h3>Data Warehousing</h3>
+                <a href="Notes/Data Warehousing.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 6-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/ESIA.jpg"
+                class="card-img-top"
+                alt="Environmental and Social Impact Assessment"
+              />
+              <div class="d-flex px-4">
+                <h3>Environmental and Social Impact Assessment</h3>
+                <a
+                  href="Notes/Environmental and Social Impact Assessment.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!--sem7-->
+      <div class="container">
+        <h1 id="sem">Semester 7</h1>
+        <div class="row g-4" id="notes">
+          <!--Paper 1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/PM.jpg"
+                class="card-img-top"
+                alt="Principles of Management"
+              />
+              <div class="d-flex px-4">
+                <h3>Principles of Management</h3>
+                <a href="Notes/Principles of Management.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 2-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/HVE.jpg"
+                class="card-img-top"
+                alt="Human Values and Ethics"
+              />
+              <div class="d-flex px-4">
+                <h3>Human Values and Ethics</h3>
+                <a href="Notes/Human Values and Ethics.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 3-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/ITAS.jpg"
+                class="card-img-top"
+                alt="IT in Agricultural System"
+              />
+              <div class="d-flex px-4">
+                <h3>IT in Agricultural System</h3>
+                <a href="Notes/IT in Agricultural System.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 4-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/PRW.jpg"
+                class="card-img-top"
+                alt="Project Report Writing"
+              />
+              <div class="d-flex px-4">
+                <h3>Project Report Writing</h3>
+                <a href="Notes/Project Report Writing.pdf" target="_blank">
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+
+          <!--Paper 5-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Book Photos/EFCE.jpg"
+                class="card-img-top"
+                alt="English for Competitive Examinations"
+              />
+              <div class="d-flex px-4">
+                <h3>English for Competitive Examination</h3>
+                <a
+                  href="Notes/English for Competitive Examinations.pdf"
+                  target="_blank"
+                >
+                  <img
+                    id="icon"
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    alt="download"
+                  />
+                </a>
+              </div>
+              <p id="description">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <script src="studystash.js"></script>
+  </body>
+</html>
