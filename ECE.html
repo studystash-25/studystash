@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyStash</title>
+    <link rel="icon" type="image/x-icon" href="fav icon.png" />
+    <link rel="stylesheet" href="studystash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .head h1 {
+      font-family: "Courgette", cursive;
+      margin-top: 150px;
+      text-align: center;
+      color: saddlebrown;
+    }
+    #sem {
+      font-size: 30px;
+      text-align: start;
+      margin-top: 30px;
+    }
+    .card {
+      width: 70%;
+      height: 60%;
+      justify-self: center;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+    .card-img-top {
+      width: 100%;
+      height: 300px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      font-size: 20px;
+    }
+    #icon {
+      width: 50px;
+      height: 50px;
+      margin-top: 10px;
+    }
+    #card-text {
+      gap: 40px;
+    }
+    #para {
+      font-family: "Nunito", sans-serif;
+      margin-left: 30px;
+    }
+    hr {
+      border: 1px solid black;
+      margin-top: 40px;
+    }
+  </style>
+  <body>
+    <nav class="navsection" id="navbar">
+      <div class="logo" style="margin-left: 150px">
+        <img style="height: 50px" src="Logo.png" alt="logo" />
+      </div>
+      <ul class="list-unstyled" id="navLinks">
+        <li><a href="">Browse</a></li>
+        <li><a href="ece.html">My Books</a></li>
+        <li><a href="">Post</a></li>
+        <li><a href="about.html">About</a></li>
+        <li>
+          <button class="btn" id="login" onclick="openPopup1()">Log In</button>
+        </li>
+        <li>
+          <button class="btn" id="signup" onclick="openPopup2()">
+            Sign Up
+          </button>
+        </li>
+      </ul>
+      <div
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
+        ☰
+      </div>
+    </nav>
+
+    <!--login box-->
+    <div class="popup-box1" id="popup-box1">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon1"
+        onclick="closePopup1()"
+      />
+      <h1>Welcome Back</h1>
+      <p class="p0">Login to continue your journey</p>
+
+      <button class="google1">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Login with Google
+      </button>
+      <button class="apple1">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Login with Apple
+      </button>
+      <p class="p12">Or Login with your email</p>
+      <input type="email" id="email1" placeholder="Email" />
+      <input type="password" id="password1" placeholder="Password" />
+      <p id="error-msg1">Please enter valid credentials</p>
+      <button class="update1" onclick="login()">Login</button>
+      <p class="p32">
+        Don’t have an account?
+        <span class="p32a" onclick="switchToSignUp()">Sign Up</span>
+      </p>
+    </div>
+
+    <!--signup box-->
+    <div class="popup-overlay"></div>
+    <div class="popup-box2" id="popup-box2">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon2"
+        onclick="closePopup2()"
+      />
+      <h1>Create your account</h1>
+      <p class="p0">Join StüdyStash to start your journey</p>
+      <button class="google2">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Sign up with Google
+      </button>
+      <button class="apple2">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Sign up with Apple
+      </button>
+      <p class="p12">Or sign up with your email</p>
+      <input type="text" id="fullname" placeholder="Full Name" />
+      <input type="email" id="email2" placeholder="Email" />
+      <input type="password" id="password2" placeholder="Password" />
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <p id="error-msg2">Please fill all details correctly</p>
+      <button class="update2" onclick="createAccount()">Create Account</button>
+      <p class="p32">
+        Already have an account?
+        <span class="p32a" onclick="switchToSignIn()">Log In</span>
+      </p>
+    </div>
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1>Electronics and Communication Engineering</h1>
+          <hr />
+          <h1 id="sem">Semester 1</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/P1.webp"
+                class="card-img-top"
+                alt="Profession Development 1"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>
+                  Professional <br />
+                  English I
+                </h3>
+                <a href="PDF/Professional English I.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/M1.jpg"
+                class="card-img-top"
+                alt="Matrices and Calculus"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Matrices andCalculus</h3>
+                <a href="PDF/Matrices and Calculus.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/PH1.webp"
+                class="card-img-top"
+                alt="Engineering Physics"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Engineering<br />Physics</h3>
+                <a href="PDF/Engineering Physics.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/Che.jpg"
+                class="card-img-top"
+                alt="Engineering Chemistry"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>
+                  Engineering <br />
+                  Chemistry
+                </h3>
+                <a href="PDF/Engineering Chemistry.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/Python.jpg"
+                class="card-img-top"
+                alt="Problem Solving and Python Programming"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Python Programming</h3>
+                <a href="PDF/Problem Solving and Python Programming.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="Photos/T1.jpg" class="card-img-top" alt="தமிழர் மரபு" />
+              <div class="d-flex px-5" id="card-text">
+                <h3>தமிழர் மரபு</h3>
+                <a href="PDF/Heritage of Tamil.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1 id="sem">Semester 2</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/P2.jpg"
+                class="card-img-top"
+                alt="Profession Development 2"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>
+                  Professional <br />
+                  English II
+                </h3>
+                <a href="PDF/Professional English II.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/M2.jpg"
+                class="card-img-top"
+                alt="Statistics and Numerical Methods"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Statistics& NumericMeth</h3>
+                <a href="PDF/Statistics and Numerical Methods.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/PH2.jpg"
+                class="card-img-top"
+                alt="Physics for Engineering "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Physics for<br />Engineering</h3>
+                <a href="PDF/Physics for Electronics Engineering.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/EIE.jpg"
+                class="card-img-top"
+                alt="Electrical and Instrumentation Engineering"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>
+                  Electrical& <br />
+                  Instrument
+                </h3>
+                <a
+                  href="PDF/Basic Electrical and Instrumentation Engineering.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/EG.jpg"
+                class="card-img-top"
+                alt="Engineering Graphics"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Engineering Graphics</h3>
+                <a href="PDF/Engineering Graphics.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/CA.webp"
+                class="card-img-top"
+                alt="Circuit Analysis"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Circuit Analysis</h3>
+                <a href="PDF/Circuit Analysis.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/T2.jpg"
+                class="card-img-top"
+                alt="தமிழரும் தொழில்நுட்பமும்"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>தமிழரும் தொழில்</h3>
+                <a href="PDF/Tamils and Technology.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1 id="sem">Semester 3</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/RPLA.webp"
+                class="card-img-top"
+                alt="Random Processes and Linear Algebra "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Random Processes<br /></h3>
+                <a href="PDF/Random Process and Linear Algebra.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/C Prog.jpg"
+                class="card-img-top"
+                alt="C Programming and Data Structures"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>C Prog & DataStructure</h3>
+                <a href="PDF/C Programming and Data structure.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/SS.jpg"
+                class="card-img-top"
+                alt="Signals and Systems"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Signals &<br />Systems</h3>
+                <a href="PDF/Signals and Systems.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/EDC.jpg"
+                class="card-img-top"
+                alt="Electronic Devices and Circuits"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>
+                  Electronic&<br />
+                  Circuits
+                </h3>
+                <a href="PDF/Electronic Devices and Circuits.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/CS.webp"
+                class="card-img-top"
+                alt="Control Systems"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Control Systems</h3>
+                <a href="PDF/Control Systems.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/DSD.jpg"
+                class="card-img-top"
+                alt="Digital Systems Design"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>DigitalSys Design</h3>
+                <a href="PDF/Digital Systems Design.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1 id="sem">Semester 4</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/EF.webp"
+                class="card-img-top"
+                alt="Electromagnetic Fields "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Electromag Fields<br /></h3>
+                <a href="PDF/Electromagnetic Fields.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/NS.jpg"
+                class="card-img-top"
+                alt="Networks and Security"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Networks& Security</h3>
+                <a href="PDF/Networks and Security.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/LIC.jpg"
+                class="card-img-top"
+                alt="Linear Integrated Circuits"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Integrated<br />Circuits</h3>
+                <a href="PDF/Linear Integrated Circuits.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/DSP.gif"
+                class="card-img-top"
+                alt="Digital Signal Processing"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>DigitalSignal Processing</h3>
+                <a href="PDF/Digital Signal Processing.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/Comm Sys.webp"
+                class="card-img-top"
+                alt="Communication Systems "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Communicate Systems</h3>
+                <a href="PDF/Communication Systems.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/ESS.jpg"
+                class="card-img-top"
+                alt="Environmental Sciences and Sustainability "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>EnvironSci & Sustainability</h3>
+                <a href="PDF/Environmental Sciences and Sustainability.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1 id="sem">Semester 5</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/WC.jpg"
+                class="card-img-top"
+                alt="Wireless Communication"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Wireless<br />Communicate</h3>
+                <a href="PDF/Wireless Communication.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/VSD.jpg"
+                class="card-img-top"
+                alt="VLSI and Chip Design "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>VLSI&Chip Design</h3>
+                <a href="PDF/VLSI and Chip Design.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/TLS.jpg"
+                class="card-img-top"
+                alt="Transmission lines and RF Systems"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Translines& RF System</h3>
+                <a href="PDF/Transmission Lines and RF Systems.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/SA.webp"
+                class="card-img-top"
+                alt="Satellite Communication"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Satellite Communicate</h3>
+                <a href="PDF/Satellite Communication.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/WSND.jpg"
+                class="card-img-top"
+                alt="Wireless Sensor Network Design"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Wireless SensorNet</h3>
+                <a href="PDF/Wireless Sensor Network Design.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/BAN.jpg"
+                class="card-img-top"
+                alt="Body Area Network"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>BodyArea Networks</h3>
+                <a href="PDF/Body Area Network.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1 id="sem">Semester 6</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/AIML.webp"
+                class="card-img-top"
+                alt="Artificial Intelligence & Machine Learning"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>AI & ML</h3>
+                <a href="PDF/Artificial Intelligence and Machine Learning.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/ESID.jpg"
+                class="card-img-top"
+                alt="Embedded System & IoT Design "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>EmbSystems & Design</h3>
+                <a href="PDF/VLSI and Chip Design.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/RES.jpg"
+                class="card-img-top"
+                alt="Renewable Energy Systems"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Renewable energy sys</h3>
+                <a href="PDF/Renewable Energy Systems.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/MSME Design.jpeg"
+                class="card-img-top"
+                alt="MEMS DESIGN"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>MEMS Design</h3>
+                <a href="PDF/MEMS.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/WD.webp"
+                class="card-img-top"
+                alt="Wearable device"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Wearable Devices</h3>
+                <a href="PDF/Wearable Devices.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/4G-5G CS.jpg"
+                class="card-img-top"
+                alt="4G/5G communication networks"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>4G/5G communet</h3>
+                <a href="PDF/4G-5G COMMUNICATION NETWORKS.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid d-flex">
+      <div class="container">
+        <div class="head">
+          <h1 id="sem">Semester 7</h1>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/PM.jpg"
+                class="card-img-top"
+                alt="Principles of Management"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Principlesof Management</h3>
+                <a href="PDF/Principles of management.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/HVE.webp"
+                class="card-img-top"
+                alt="Human Values on Ethics "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>HumanValues & Ethics</h3>
+                <a href="PDF/Human Values and Ethics.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/ITAS.jpg"
+                class="card-img-top"
+                alt="IT in agricultural system "
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>IT in agri system</h3>
+                <a href="PDF/IT in Agricultural Systems.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+            <div class="col-md-4">
+            <div class="card">
+              <img
+                src="Photos/ECE.jpg"
+                class="card-img-top"
+                alt="English for Competitive Examinations"
+              />
+              <div class="d-flex px-5" id="card-text">
+                <h3>Eng for Compititive Examinations</h3>
+                <a href="PDF/English for Competitive Exminations.pdf" target="_blank">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000"
+                    id="icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <p id="para">Handwritten notes for 5 units</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="studystash.js"></script>
+  </body>
+</html>
