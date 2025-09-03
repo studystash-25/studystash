@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Department</title>
+    <link rel="icon" type="image/x-icon" href="fav icon.png" />
+    <link rel="stylesheet" href="studystash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"/>
+</head>
+<body>
+    <nav class="navsection" id="navbar">
+      <div class="logo" style="margin-left: 150px">
+        <img style="height: 50px" src="Logo.png" alt="logo" />
+      </div>
+      <ul class="list-unstyled" id="navLinks">
+        <li><a href="">Browse</a></li>
+        <li><a href="">My Books</a></li>
+        <li><a href="">Post</a></li>
+        <li><a href="">About</a></li>
+        <li>
+          <button class="btn" id="login" onclick="openPopup1()">Log In</button>
+        </li>
+        <li>
+          <button class="btn" id="signup" onclick="openPopup2()">
+            Sign Up
+          </button>
+        </li>
+      </ul>
+      <div
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
+        ☰
+      </div>
+    </nav>
+
+ <!--login box-->
+    <div class="popup-box1" id="popup-box1">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon1"
+        onclick="closePopup1()"
+      />
+      <h1>Welcome Back</h1>
+      <p class="p0">Login to continue your journey</p>
+
+      <button class="google1">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Login with Google
+      </button>
+      <button class="apple1">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Login with Apple
+      </button>
+      <p class="p12">Or Login with your email</p>
+      <input type="email" id="email1" placeholder="Email" />
+      <input type="password" id="password1" placeholder="Password" />
+      <p id="error-msg1">Please enter valid credentials</p>
+      <button class="update1" onclick="login()">Login</button>
+      <p class="p32">
+        Don’t have an account?
+        <span class="p32a" onclick="switchToSignUp()">Sign Up</span>
+      </p>
+    </div>
+
+    <!--signup box-->
+    <div class="popup-overlay"></div>
+    <div class="popup-box2" id="popup-box2">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon2"
+        onclick="closePopup2()"
+      />
+      <h1>Create your account</h1>
+      <p class="p0">Join StüdyStash to start your journey</p>
+      <button class="google2">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Sign up with Google
+      </button>
+      <button class="apple2">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Sign up with Apple
+      </button>
+      <p class="p12">Or sign up with your email</p>
+      <input type="text" id="fullname" placeholder="Full Name" />
+      <input type="email" id="email2" placeholder="Email" />
+      <input type="password" id="password2" placeholder="Password" />
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <p id="error-msg2">Please fill all details correctly</p>
+      <button class="update2" onclick="createAccount()">Create Account</button>
+      <p class="p32">
+        Already have an account?
+        <span class="p32a" onclick="switchToSignIn()">Log In</span>
+      </p>
+    </div>
+
+
+
+    <div>
+      <h1 class="co">Computer science and Engineering</h1>
+    </div>
+    <hr style="border: 1px solid black;">
+    <h3 class="sem">Semester 1</h3>
+      <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/chemistry.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Engineering Chemistry</h3><a href="CSE Dept/Chemistry.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+        <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/python.jpg" class="english">
+         <div style="display: flex;margin-left: 10px;">
+          <h3>Python Programming</h3><a href="CSE Dept/Problem Solving and Python Programming - GE3151 2021 Regulation - Notes - Hand Writting.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/tamil.jpg" class="english">
+       <div style="display: flex;margin-left: 10px;">
+          <h3>Hertage of TAMIL</h3><a href="CSE Dept/HT Notes 1 Year 1 Sem OC.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+
+    <div class="container" style="display: flex;gap: 40px;">
+      <div class="card">
+        <img src="photos/english.webp" class="english">
+         <div style="display: flex;margin-left: 10px;">
+          <h3>Professional English I</h3><a href="CSE Dept/professional English I.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/matrics.jpg" class="english">
+         <div style="display: flex;margin-left: 10px;">
+          <h3>Matrics and Calculus</h3><a href="CSE Dept/Matrics and Calculus.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/physics.webp" class="english">
+         <div style="display: flex;margin-left: 10px;">
+          <h3>Engineering Physics</h3><a href="CSE Dept/Engineering Physics.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+</div>
+
+
+    <hr style="border: 1px solid black;">
+
+<h3 class="sem">Semester 2</h3>
+
+<div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/english 2.jpg" class="english">
+          <div style="display: flex;margin-left: 10px;">
+          <h3>Professional English II</h3><a href="CSE Dept/Professional English - 2.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/tamil2.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Tamils and Technology</h3><a href="CSE Dept/Tamils and Technology.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/physics2.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Physics for Information science </h3><a href="CSE Dept/Physics for Information science.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+
+    <div class="container" style="display: flex;gap: 40px;">
+      <div class="card">
+        <img src="photos/beee.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Basic Electrical Electronics Engineering</h3><a href="CSE Dept/Basic Electrical and Electronics Engineering - BE3251 2021 Regulation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/c.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Programming in C</h3><a href="CSE Dept/Programming in C - CS3251 2021 Regulation - Notes - Hand Writing (1).pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/eg.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Engineering Graphics</h3><a href="CSE Dept/Engineering Graphics.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+</div>
+
+<div class="container" style="display: flex;gap: 40px;">
+      <div class="card">
+        <img src="photos/statics.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Statistics and Numerical Methods</h3><a href="CSE Dept/Statistics and Numerical Methods - MA3251 2021 Regulation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+</div>
+    <hr style="border: 1px solid black;">
+
+<h3 class="sem">Semester 3</h3>
+<div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/data structures.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Data Structure</h3><a href="CSE Dept/Data Structures - CS3301 2021 Regulation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px"  ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div style="margin-left: 10px;">
+
+      <div class="card">
+        <img src="photos/fds.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Foundation of Data Science </h3><a href="CSE Dept/FOD.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      
+</div>
+
+<div class="card">
+        <img src="photos/oops.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Object Oriented Programming</h3><a href="CSE Dept/Object Oriented Programming.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+        <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      
+</div>
+    </div>
+
+
+
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/dpco.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Digital Principle and Computer Organization</h3><a href="CSE Dept/Digital Principles and Computer Organization - CS3351 2021 Regulation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+        <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/discrite.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Discrete Mathematics</h3><a href="CSE Dept/Discrete Mathematics - MA3354 2021 Regulation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p style="margin-left: 10px;">Handwritten notes for all units</p>
+      
+</div>
+    </div>
+    <hr style="border: 1px solid black;">
+
+    <h3 class="sem">Semester 4</h3>
+<div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/algorithm.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Alogrithms</h3><a href="CSE Dept/Algorithms - CS3401 2021 Regulation - Notes LQ.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/dbms.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Data Base Management System</h3><a href="CSE Dept/dbms.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/os.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Introduction to Operating System</h3><a href="CSE Dept/Introduction to Operating Systems OS - CS3451 - Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+<div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/evs.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Environmental Science and Sustainability</h3><a href="CSE Dept/Environmental Sciences and Sustainability - GE3451 - Written Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/toc.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Theory Of Computation</h3><a href="CSE Dept/Theory of Computation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/aiml.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3></h3><a href="CSE Dept/Artificial Intelligence and Machine Learning - CS3491 - Notes Book.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+    <hr style="border: 1px solid black;">
+
+    <h3 class="sem">Semester 5</h3>
+<div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/dc.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Distributed Computing</h3><a href="CSE Dept/Distributed Computing - CS3551 - Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/cn.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Coputer Networks</h3><a href="CSE Dept/Computer Networks - CS3591 - Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/cd.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Complier Design </h3><a href="CSE Dept/Compiler Design - CS3501 2021 Regulation - Notes - Hand Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+
+
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/cc.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Cloud Computing</h3><a href="CSE Dept/CLOUD COMPUTING DIGITAL NOTES (R18A0523).pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/cb.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Cryptography and Cyber Security</h3><a href="CSE Dept/Cryptography and Cyber Security - Concept Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+      </div>
+      <div class="card">
+        <img src="photos/bda.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Big Data Analytics</h3><a href="CSE Dept/Big Data Analytics.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+        <hr style="border: 1px solid black;">
+
+ <h3 class="sem">Semester 6</h3>
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/mma.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Multimedia and Animation</h3><a href="CSE Dept/Multimedia and Animation.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/eiot.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Embedded System and Iot</h3><a href="CSE Dept/ilovepdf_merged (4)_removed.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/sta.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Software Testing and Automation</h3><a href="CSE Dept/Software Testing and Automation.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/oosw.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Object Oriented Software</h3><a href="CSE Dept/Object Oriented Software Engineering - CCS356 - Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/ns.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Network Security</h3><a href="pdf files/Networks and Security - EC3401 - Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px"></a> 
+        </div>
+        <p>Handwritten notes for all units</p>
+      </div>
+      <div class="card">
+        <img src="photos/esa.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3>Environmental Science and Social Impact Assement</h3><a href="pdf files/environmental science and social impact assement.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/dw.jpg" class="english">
+         <div style="display: flex;margin-left: 10px;">
+          <h3>Data Warehousing</h3><a href="CSE Dept/Data Warehousing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      
+        
+    </div>
+
+        <hr style="border: 1px solid black;">
+
+ <h3 class="sem">Semester 7</h3>
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/pm.jpg" class="english">
+       <div style="display: flex;margin-left: 10px;">
+          <h3> Principles of management</h3><a href="CSE Dept/122 - MG8591, MG6851 Principles of Management POM - Notes.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/hve.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3> Human Values and Ethics </h3><a href="CSE Dept/human values and ethics.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+         <p>Handwritten notes for all units</p>
+      
+        
+      </div>
+      <div class="card">
+        <img src="photos/ita.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3> IT in Agricultural System </h3><a href="CSE Dept/It in Agricultural.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+        <p>Handwritten notes for all units</p>
+      </div>
+</div>
+    </div>
+    <div class="container" style="display: flex; gap: 40px;">
+      <div class="card">
+        <img src="photos/prw.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+          <h3> Project Report Writing</h3>
+             <a href="CSE Dept/Project Report Writing.pdf"><img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px" ></a> 
+        </div>
+        <p>Handwritten notes for all units</p>
+      </div>
+
+      <div class="card">
+        <img src="photos/efce.jpg" class="english">
+        <div style="display: flex;margin-left: 10px;">
+                    <h3>English for Competitive Examinations</h3><a href="CSE Dept/english for competative exam.pdf"></a> <img src="https://img.icons8.com/?size=100&id=14100&format=png&color=000000" alt="download" height="50px" width="50px"> 
+
+        </div>
+         <p>Handwritten notes for all units</p>
+      </div>
+      
+    </div>
+
+
+     <script src="studystash.js"></script>
+</body>
+</html>
