@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyStash</title>
+    <link rel="icon" type="image/x-icon" href="fav icon.png" />
+    <link rel="stylesheet" href="studystash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <style>
+      .dept {
+        margin-top: 130px;
+        text-align: center;
+        color: saddlebrown;
+        font-family: "courgette", cursive;
+      }
+      .sem {
+        font-family: "courgette", cursive;
+        text-align: start;
+        font-size: 35px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        margin-left: 250px;
+        color: saddlebrown;
+      }
+      hr {
+        margin-top: 40px;
+        border: 1px solid black;
+      }
+
+      .desc {
+        text-justify: justify;
+        font-size: medium;
+        font-family: "Nunito", sans-serif;
+        color: black;
+        margin-top: 10px;
+        padding: right 14px;
+      }
+      .container-fluid {
+        display: flex;
+      }
+      .card {
+        border: none;
+        width: 250px;
+        overflow: hidden;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+      .card-img-top {
+        width: 250px;
+
+        object-fit: cover;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+       margin-left: 70px;
+       
+      }
+
+      .col-lg-4,
+      .col-md-6 {
+        display: flex;
+         
+      }
+      .card a {
+        text-decoration: none;
+        justify-content: space-between;
+        margin-top: auto;
+        display: flex;
+      }
+
+      .card h3 {
+        font-size: 20px;
+        color: #000;
+      }
+      .download-btn img {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+      }
+    </style>
+    <nav class="navsection" id="navbar">
+      <div class="logo" style="margin-left: 150px">
+        <img style="height: 50px" src="Logo.png" alt="logo" />
+      </div>
+      <ul class="list-unstyled" id="navLinks">
+        <li><a href="">Browse</a></li>
+        <li><a href="">My Books</a></li>
+        <li><a href="">Post</a></li>
+        <li><a href="">About</a></li>
+        <li>
+          <button class="btn" id="login" onclick="openPopup1()">Log In</button>
+        </li>
+        <li>
+          <button class="btn" id="signup" onclick="openPopup2()">
+            Sign Up
+          </button>
+        </li>
+      </ul>
+      <div
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false"
+      ></div>
+    </nav>
+
+    <!--login box-->
+    <div class="popup-box1" id="popup-box1">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon1"
+        onclick="closePopup1()"
+      />
+      <h1>Welcome Back</h1>
+      <p class="p0">Login to continue your journey</p>
+
+      <button class="google1">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Login with Google
+      </button>
+      <button class="apple1">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Login with Apple
+      </button>
+      <p class="p12">Or Login with your email</p>
+      <input type="email" id="email1" placeholder="Email" />
+      <input type="password" id="password1" placeholder="Password" />
+      <p id="error-msg1">Please enter valid credentials</p>
+      <button class="update1" onclick="login()">Login</button>
+      <p class="p32">
+        Don’t have an account?
+        <span class="p32a" onclick="switchToSignUp()">Sign Up</span>
+      </p>
+    </div>
+
+    <!--signup box-->
+    <div class="popup-overlay"></div>
+    <div class="popup-box2" id="popup-box2">
+      <img
+        src="https://img.icons8.com/?size=100&id=U9WVo0Xa8f3I&format=png&color=8b4513"
+        class="closeicon2"
+        onclick="closePopup2()"
+      />
+      <h1>Create your account</h1>
+      <p class="p0">Join StüdyStash to start your journey</p>
+      <button class="google2">
+        <img
+          src="https://img.icons8.com/?size=100&id=oL6UDOhbqIOm&format=png&color=8b4513"
+          alt="Google"
+        />
+        Sign up with Google
+      </button>
+      <button class="apple2">
+        <img
+          src="https://img.icons8.com/?size=100&id=95294&format=png&color=8b4513"
+          alt="Apple"
+        />
+        Sign up with Apple
+      </button>
+      <p class="p12">Or sign up with your email</p>
+      <input type="text" id="fullname" placeholder="Full Name" />
+      <input type="email" id="email2" placeholder="Email" />
+      <input type="password" id="password2" placeholder="Password" />
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <p id="error-msg2">Please fill all details correctly</p>
+      <button class="update2" onclick="createAccount()">Create Account</button>
+      <p class="p32">
+        Already have an account?
+        <span class="p32a" onclick="switchToSignIn()">Log In</span>
+      </p>
+    </div>
+    <h1 class="dept">Artificial Intelligence and Data Science</h1>
+    <hr />
+    <h3 class="sem">Semester 1</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/PE-I.webp "
+                class="card-img-top"
+                alt="Professional English I"
+              />
+              <a
+                href="/Sem/Professional English I - HS3152 2021 Regulation - Notes - Hand Writting.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Professional English I</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/M-I.jpeg"
+                class="card-img-top"
+                alt="Matrices and Calculus"
+              />
+              <a
+                href="/Sem/Matrices and Calculus - MA3151 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Matrices and Calculus</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/EP.webp"
+                class="card-img-top"
+                alt="Engineering Physics"
+              />
+              <a
+                href="/Sem/Engineering Physics - PH3151 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Engineering Physics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/EC.jpg"
+                class="card-img-top"
+                alt="Engineering Chemistry"
+              />
+              <a
+                href="/Sem/Engineering Chemistry - CY3151 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Engineering Chemistry</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/PS AND PP.jpg"
+                class="card-img-top"
+                alt="Problem Solving and Python Programming"
+              />
+              <a
+                href="/Sem/Problem Solving and Python Programming - GE3151 2021 Regulation - Notes - Hand Writting.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Problem Solving and Python Programming</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/TM.jpg"
+                class="card-img-top"
+                alt="Tamilar marabu"
+              />
+              <a
+                href="/Sem/Heritage of Tamil.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Heritage Of Tamil</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h3 class="sem">Semester 2</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/PE-II.png "
+                class="card-img-top"
+                alt="Professional English II"
+              />
+              <a
+                href="/Sem/Professional English - 2.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Professional English II</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/SNM.jpeg"
+                class="card-img-top"
+                alt="Statistics and Numerical Methods"
+              />
+              <a
+                href="/Sem/Statistics and Numerical Methods - MA3251 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Statistics and Numerical Methods</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Physics For Information Science.png"
+                class="card-img-top"
+                alt="Physics For Information Science"
+              />
+              <a
+                href="/Sem/Physics for Information science.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Physics For Information Science</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/BEEE.jpeg"
+                class="card-img-top"
+                alt="Basic Electrical and Electronics Engineering"
+              />
+              <a
+                href="/Sem/Basic Electrical and Electronics Engineering - BE3251 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Basic Electrical and Electronics Engineering</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/engineering-graphics.jpg"
+                class="card-img-top"
+                alt="Engineering Graphics"
+              />
+              <a
+                href="/Sem/Engineering Graphics - GE3251 2021 Regulation - Notes LQ.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Engineering Graphics</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/tamils & technology.jpg"
+                class="card-img-top"
+                alt="Tamils & Technology"
+              />
+              <a
+                href="/Sem/Tamils and Technology.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Tamils & Technology</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/data structure design.jpg"
+                class="card-img-top"
+                alt="Data Structures Design"
+              />
+              <a
+                href="/Sem/Data Structures Design - AD3251 - Written Notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Data Structures Design</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h3 class="sem">Semester 3</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Discrete Mathematics.webp "
+                class="card-img-top"
+                alt="Discrete Mathematics"
+              />
+              <a
+                href="/Sem/Discrete Mathematics - MA3354 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Discrete Mathematics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/dpco.webp"
+                class="card-img-top"
+                alt="Digital Principles and Computer Organization "
+              />
+              <a
+                href="/Sem/Digital Principles and Computer Organization - CS3351 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Digital Principles and Computer Organization</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Database Design and Management.jpg"
+                class="card-img-top"
+                alt="Database Design and Management"
+              />
+              <a
+                href="/Sem/Database Design and Management - AD3391 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Database Design and Management</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Design and Analysis of Algorithms.jpg"
+                class="card-img-top"
+                alt="Design and Analysis of Algorithms"
+              />
+              <a
+                href="/Sem/Design and Analysis of Algorithms - AD3351 2021 Regulation - Notes - Hand Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Design and Analysis of Algorithms</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Data Exploration and Visualization.jpg"
+                class="card-img-top"
+                alt="Data Exploration and Visualization"
+              />
+              <a
+                href="/Sem/Data Exploration and Virtualization - Handwritten notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Data Exploration and Visualization</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/AI.webp"
+                class="card-img-top"
+                alt="Artificial Intelligence  "
+              />
+              <a
+                href="/Sem/Artificial Intelligence - AL3391 2021 Regulation - Notes 1.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Artificial Intelligence</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h3 class="sem">Semester 4</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Probability and Statistics.webp "
+                class="card-img-top"
+                alt="Probability and Statistics"
+              />
+              <a
+                href="/Sem/Probability and Statistics - MA3391 - Full Notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Probability and Statistics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/os.webp"
+                class="card-img-top"
+                alt=" Operating Systems "
+              />
+              <a
+                href="/Sem/Operating Systems - AL3452 2021 Regulation - Notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Operating Systems</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Machine Learning.jpg"
+                class="card-img-top"
+                alt="Machine Learning "
+              />
+              <a
+                href="/Sem/Machine Learning - AL3451 - Written Notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Machine Learning</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Fundamentals of Data Science and Analytics.jpg"
+                class="card-img-top"
+                alt="Fundamentals of  Data Science and Analytics"
+              />
+              <a
+                href="/Sem/Fundamentals of data science and Analytics.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Fundamentals of Data Science and Analytics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Computer Network.webp"
+                class="card-img-top"
+                alt=" Computer Networks  "
+              />
+              <a
+                href="/Sem/Computer Networks - CS3591 - Notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Computer Networks</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Environmental Sciences and Sustainability.jpg"
+                class="card-img-top"
+                alt="Environmental Sciences and Sustainability "
+              />
+              <a
+                href="/Sem/Environmental Sciences and Sustainability - GE3451 - Written Notes.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Environmental Sciences and Sustainability</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h3 class="sem">Semester 5</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Deep Learning.jpg "
+                class="card-img-top"
+                alt="Deep Learning "
+              />
+              <a
+                href="/Sem/Deep Learning.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Deep Learning</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Data and Information Security.jpg"
+                class="card-img-top"
+                alt="Data and Information Security"
+              />
+              <a
+                href="/Sem/Data Information and Security.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Data and Information Security</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/distributed computing.png"
+                class="card-img-top"
+                alt="Distributed Computing "
+              />
+              <a
+                href="/Sem/Distributed Computing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Distributed Computing</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/big data analytics.webp"
+                class="card-img-top"
+                alt="Big Data Analytics "
+              />
+              <a
+                href="/Sem/Big Data Analytics.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Big Data Analytics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Cloud Computing.webp"
+                class="card-img-top"
+                alt="Cloud Computing"
+              />
+              <a
+                href="/Sem/Cloud Computing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Cloud Computing</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Data Warehousing.webp"
+                class="card-img-top"
+                alt="Data Warehousing"
+              />
+              <a
+                href="/Sem/Data Warehousing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Data Warehousing</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h3 class="sem">Semester 6</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/ST.webp "
+                class="card-img-top"
+                alt="Storage Technologies"
+              />
+              <a
+                href="/Sem/Storage Technologies.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Storage Technologies</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Health care and Analytics.jpg"
+                class="card-img-top"
+                alt="Health care analystics"
+              />
+              <a
+                href="/Sem/HEALTH CARE ANALYTICS.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Health care analystics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/EM & IOT.jpg"
+                class="card-img-top"
+                alt="Embedded systems and IoT "
+              />
+              <a
+                href="/Sem/Embedded System and IOT.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Embedded systems and IoT</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Multimedia.webp"
+                class="card-img-top"
+                alt="Multimedia and animation "
+              />
+              <a
+                href="/Sem/Multimedia and Animation.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Multimedia and animation</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/web application security.webp"
+                class="card-img-top"
+                alt="Web application security"
+              />
+              <a
+                href="/Sem/Web Application Security.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Web application security</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Food,Nutrition and Health.webp"
+                class="card-img-top"
+                alt="Food, nutrition and health"
+              />
+              <a
+                href="/Sem/Food Nutrition and Health.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Food nutrition and health</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Handwritten notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h3 class="sem">Semester 7</h3>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Principles of Management.webp "
+                class="card-img-top"
+                alt="Principles of Management"
+              />
+              <a
+                href="/Sem/Principles of management.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Principles of Management</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Human values & Ethics.webp"
+                class="card-img-top"
+                alt="Human values & Ethics"
+              />
+              <a
+                href="/Sem/Human Values and Ethics.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Human values & Ethics</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/IT in Agricultural Systems.webp"
+                class="card-img-top"
+                alt="IT in Agricultural Systems"
+              />
+              <a
+                href="/Sem/IT in Agriculture System.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>IT in agricultural system</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/Project Report Writing.webp"
+                class="card-img-top"
+                alt="Project Report Writing"
+              />
+              <a
+                href="/Sem/Project Report Writing.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>Project Report Writing</h3>
+
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <img
+                src="/images/English for Competitive Examinations.jpg"
+                class="card-img-top"
+                alt="English for competitive examinations"
+              />
+              <a
+                href="/Sem/English for Competitive Examinations.pdf"
+                class="download-btn"
+                target="_blank"
+              >
+                <h3>English for competitive exam</h3>
+                <img
+                  src="https://img.icons8.com/?size=100&id=83988&format=png&color=000000"
+                />
+              </a>
+              <p class="desc">Notes for all Units.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <script src="studystash.js"></script>
+  </body>
+</html>
